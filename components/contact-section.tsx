@@ -1,34 +1,41 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Badge } from "@/components/ui/badge"
-import { Phone, Mail, MapPin, Clock, MessageCircle, CheckCircle } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  MessageCircle,
+  CheckCircle,
+} from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactSection() {
-  const { toast } = useToast()
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  })
+  });
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       const response = await fetch("/api/contact", {
@@ -37,40 +44,46 @@ export default function ContactSection() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      })
+      });
 
       if (response.ok) {
-        setIsSubmitted(true)
+        setIsSubmitted(true);
         toast({
           title: "Message Sent!",
           description: "We'll get back to you within 24 hours.",
-        })
+        });
       } else {
-        throw new Error("Failed to submit")
+        throw new Error("Failed to submit");
       }
     } catch (error) {
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <section id="contact" className="py-20 px-4 bg-muted/30">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge variant="outline" className="text-primary border-primary/20 mb-4">
+          <Badge
+            variant="outline"
+            className="text-primary border-primary/20 mb-4"
+          >
             Contact Us
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">Get in Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">
+            Get in Touch
+          </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Have questions about our services or need to schedule an appointment? We're here to help you on your journey
-            to better health.
+            Have questions about our services or need to schedule an
+            appointment? We're here to help you on your journey to better
+            health.
           </p>
         </div>
 
@@ -78,16 +91,22 @@ export default function ContactSection() {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-semibold text-foreground mb-6">
+                Contact Information
+              </h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                    <p className="text-muted-foreground">+91 98765 43210</p>
-                    <p className="text-sm text-muted-foreground">Available 24/7 for emergencies</p>
+                    <h4 className="font-semibold text-foreground mb-1">
+                      Phone
+                    </h4>
+                    <p className="text-muted-foreground">+919451194384</p>
+                    <p className="text-sm text-muted-foreground">
+                      Available 24/7 for emergencies
+                    </p>
                   </div>
                 </div>
 
@@ -96,9 +115,15 @@ export default function ContactSection() {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                    <p className="text-muted-foreground">info@physiohome.com</p>
-                    <p className="text-sm text-muted-foreground">We'll respond within 24 hours</p>
+                    <h4 className="font-semibold text-foreground mb-1">
+                      Email
+                    </h4>
+                    <p className="text-muted-foreground">
+                      shuklams2001@gmail.com
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      We'll respond within 24 hours
+                    </p>
                   </div>
                 </div>
 
@@ -107,9 +132,15 @@ export default function ContactSection() {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Service Area</h4>
-                    <p className="text-muted-foreground">Mumbai, Pune, Delhi NCR</p>
-                    <p className="text-sm text-muted-foreground">Home visits available</p>
+                    <h4 className="font-semibold text-foreground mb-1">
+                      Service Area
+                    </h4>
+                    <p className="text-muted-foreground">
+                       Delhi NCR
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Home visits available
+                    </p>
                   </div>
                 </div>
 
@@ -118,9 +149,15 @@ export default function ContactSection() {
                     <Clock className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Working Hours</h4>
-                    <p className="text-muted-foreground">Mon - Sat: 8:00 AM - 8:00 PM</p>
-                    <p className="text-muted-foreground">Sun: 10:00 AM - 6:00 PM</p>
+                    <h4 className="font-semibold text-foreground mb-1">
+                      Working Hours
+                    </h4>
+                    <p className="text-muted-foreground">
+                      Mon - Sat: 8:00 AM - 8:00 PM
+                    </p>
+                    <p className="text-muted-foreground">
+                      Sun: 10:00 AM - 6:00 PM
+                    </p>
                   </div>
                 </div>
               </div>
@@ -136,8 +173,16 @@ export default function ContactSection() {
                     Call Now
                   </a>
                 </Button>
-                <Button variant="outline" asChild className="flex-1 bg-transparent">
-                  <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                <Button
+                  variant="outline"
+                  asChild
+                  className="flex-1 bg-transparent"
+                >
+                  <a
+                    href="https://wa.me/919876543210"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <MessageCircle className="w-4 h-4 mr-2" />
                     WhatsApp
                   </a>
@@ -150,7 +195,9 @@ export default function ContactSection() {
               <div className="text-center">
                 <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
                 <p className="text-muted-foreground">Interactive Map</p>
-                <p className="text-sm text-muted-foreground">Service areas across major cities</p>
+                <p className="text-sm text-muted-foreground">
+                  Service areas across major cities
+                </p>
               </div>
             </div>
           </div>
@@ -164,12 +211,18 @@ export default function ContactSection() {
                     <CheckCircle className="w-8 h-8 text-green-600" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-2xl font-bold text-foreground">Message Sent!</h3>
+                    <h3 className="text-2xl font-bold text-foreground">
+                      Message Sent!
+                    </h3>
                     <p className="text-muted-foreground">
-                      Thank you for contacting us. We'll get back to you within 24 hours.
+                      Thank you for contacting us. We'll get back to you within
+                      24 hours.
                     </p>
                   </div>
-                  <Button onClick={() => setIsSubmitted(false)} variant="outline">
+                  <Button
+                    onClick={() => setIsSubmitted(false)}
+                    variant="outline"
+                  >
                     Send Another Message
                   </Button>
                 </CardContent>
@@ -177,7 +230,9 @@ export default function ContactSection() {
             ) : (
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl font-semibold text-foreground">Send us a Message</CardTitle>
+                  <CardTitle className="text-2xl font-semibold text-foreground">
+                    Send us a Message
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -188,7 +243,9 @@ export default function ContactSection() {
                         type="text"
                         placeholder="Your full name"
                         value={formData.name}
-                        onChange={(e) => handleInputChange("name", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("name", e.target.value)
+                        }
                         required
                       />
                     </div>
@@ -200,7 +257,9 @@ export default function ContactSection() {
                         type="email"
                         placeholder="your.email@example.com"
                         value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("email", e.target.value)
+                        }
                         required
                       />
                     </div>
@@ -211,13 +270,20 @@ export default function ContactSection() {
                         id="contact-message"
                         placeholder="Tell us how we can help you..."
                         value={formData.message}
-                        onChange={(e) => handleInputChange("message", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("message", e.target.value)
+                        }
                         required
                         rows={5}
                       />
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
                       {isSubmitting ? "Sending Message..." : "Send Message"}
                     </Button>
                   </form>
@@ -228,5 +294,5 @@ export default function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

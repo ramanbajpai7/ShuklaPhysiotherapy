@@ -25,7 +25,7 @@ export default function Navigation() {
               <div className="w-4 h-4 bg-white rounded-sm"></div>
             </div>
             <span className="font-bold text-xl font-heading text-foreground">
-              PhysioHomes
+              PhysioHome
             </span>
           </div>
 
@@ -67,7 +67,7 @@ export default function Navigation() {
           <div className="hidden lg:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <Phone className="w-4 h-4" />
-              <span>+91 98765 43210</span>
+              <span>+919451194384</span>
             </div>
             <Button onClick={() => scrollToSection("booking")}>
               Book Appointment
@@ -124,7 +124,7 @@ export default function Navigation() {
               <div className="pt-4 border-t border-border">
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-3">
                   <Phone className="w-4 h-4" />
-                  <span>+91 98765 43210</span>
+                  <span>+919451194384</span>
                 </div>
                 <Button
                   onClick={() => scrollToSection("booking")}

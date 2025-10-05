@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { Phone, Mail, MapPin, Heart } from "lucide-react"
+import { Phone, Mail, MapPin, Heart } from "lucide-react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <footer className="bg-foreground text-background py-16 px-4">
@@ -25,8 +25,8 @@ export default function Footer() {
               <span className="font-bold text-xl font-heading">PhysioHome</span>
             </div>
             <p className="text-background/80 leading-relaxed">
-              Professional physiotherapy services with 5+ years of experience, bringing expert care directly to your
-              home.
+              Professional physiotherapy services with 5+ years of experience,
+              bringing expert care directly to your home.
             </p>
             <div className="flex space-x-4">
               <a
@@ -37,7 +37,7 @@ export default function Footer() {
                 <Phone className="w-5 h-5" />
               </a>
               <a
-                href="mailto:info@physiohome.com"
+                href="mailto:shuklams2001@gmail.com"
                 className="text-background/80 hover:text-primary transition-colors"
                 aria-label="Email us"
               >
@@ -112,22 +112,26 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-background/80">+91 98765 43210</p>
+                  <p className="text-background/80">+919451194384</p>
                   <p className="text-sm text-background/60">24/7 Emergency</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-background/80">info@physiohome.com</p>
-                  <p className="text-sm text-background/60">Response within 24hrs</p>
+                  <p className="text-background/80">shuklams2001@gmail.com</p>
+                  <p className="text-sm text-background/60">
+                    Response within 24hrs
+                  </p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-background/80">Mumbai, Pune, Delhi NCR</p>
-                  <p className="text-sm text-background/60">Home visits available</p>
+                  <p className="text-background/80"> Delhi NCR</p>
+                  <p className="text-sm text-background/60">
+                    Home visits available
+                  </p>
                 </div>
               </div>
             </div>
@@ -138,7 +142,8 @@ export default function Footer() {
         <div className="border-t border-background/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-background/80 text-sm">
-              © {currentYear} PhysioHome. All rights reserved. | Professional Physiotherapy Services
+              © {currentYear} PhysioHome. All rights reserved. | Professional
+              Physiotherapy Services
             </p>
             <div className="flex items-center space-x-1 text-background/80 text-sm">
               <span>Made with</span>
@@ -149,5 +154,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
