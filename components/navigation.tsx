@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Phone, Menu, X } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Phone, Menu, X } from "lucide-react";
 
 export default function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMenuOpen(false)
-  }
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -24,7 +24,9 @@ export default function Navigation() {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <div className="w-4 h-4 bg-white rounded-sm"></div>
             </div>
-            <span className="font-bold text-xl font-heading text-foreground">PhysioHome</span>
+            <span className="font-bold text-xl font-heading text-foreground">
+              PhysioHomes
+            </span>
           </div>
 
           {/* Desktop Navigation */}
@@ -67,12 +69,21 @@ export default function Navigation() {
               <Phone className="w-4 h-4" />
               <span>+91 98765 43210</span>
             </div>
-            <Button onClick={() => scrollToSection("booking")}>Book Appointment</Button>
+            <Button onClick={() => scrollToSection("booking")}>
+              Book Appointment
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2">
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2"
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
 
@@ -115,7 +126,10 @@ export default function Navigation() {
                   <Phone className="w-4 h-4" />
                   <span>+91 98765 43210</span>
                 </div>
-                <Button onClick={() => scrollToSection("booking")} className="w-full">
+                <Button
+                  onClick={() => scrollToSection("booking")}
+                  className="w-full"
+                >
                   Book Appointment
                 </Button>
               </div>
@@ -124,5 +138,5 @@ export default function Navigation() {
         )}
       </div>
     </nav>
-  )
+  );
 }
