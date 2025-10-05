@@ -181,7 +181,7 @@ export default function TestimonialsSection() {
         {/* Stats Section */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">500+</div>
+            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">600</div>
             <div className="text-muted-foreground">Happy Patients</div>
           </div>
           <div className="text-center">
