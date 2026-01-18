@@ -13,7 +13,7 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       id: 1,
-      name: "Priya Sharma",
+      name: "Mrs. Priya Sharma",
       age: 45,
       condition: "Post-Surgery Recovery",
       rating: 5,
@@ -22,7 +22,7 @@ export default function TestimonialsSection() {
     },
     {
       id: 2,
-      name: "Rajesh Kumar",
+      name: "Mr. Rajesh Kumar",
       age: 52,
       condition: "Chronic Back Pain",
       rating: 5,
@@ -31,7 +31,7 @@ export default function TestimonialsSection() {
     },
     {
       id: 3,
-      name: "Anita Patel",
+      name: "Ms. Anita Patel",
       age: 38,
       condition: "Sports Injury",
       rating: 5,
@@ -40,21 +40,12 @@ export default function TestimonialsSection() {
     },
     {
       id: 4,
-      name: "Vikram Singh",
+      name: "Mr. Vikram Singh",
       age: 67,
       condition: "Stroke Recovery",
       rating: 5,
       text: "After my stroke, mobility was a major challenge. The neurological physiotherapy sessions at home have helped me regain independence. The therapist's patience and expertise are remarkable.",
       image: "/elderly-indian-man-kind-face.png",
-    },
-    {
-      id: 5,
-      name: "Meera Reddy",
-      age: 29,
-      condition: "Pregnancy-related Pain",
-      rating: 5,
-      text: "During my pregnancy, I experienced severe back pain. The gentle and safe physiotherapy techniques provided immense relief. The therapist understood my concerns perfectly and adapted the treatment accordingly.",
-      image: "/placeholder-rmk8k.png",
     },
   ]
 
@@ -76,7 +67,7 @@ export default function TestimonialsSection() {
 
     const interval = setInterval(() => {
       nextSlide()
-    }, 5000)
+    }, 6000)
 
     return () => clearInterval(interval)
   }, [isAutoPlaying, currentSlide])
@@ -85,59 +76,61 @@ export default function TestimonialsSection() {
   const handleMouseLeave = () => setIsAutoPlaying(true)
 
   return (
-    <section id="testimonials" className="py-20 px-4 bg-muted/30">
+    <section id="testimonials" className="py-24 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge variant="outline" className="text-primary border-primary/20 mb-4">
-            Patient Testimonials
+          <Badge variant="secondary" className="text-primary border-primary/20 mb-6 px-4 py-1 text-sm bg-primary/10">
+            Success Stories
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">What Our Patients Say</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 font-heading tracking-tight">What Our Patients Say</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Real stories from patients who have experienced our physiotherapy services and achieved remarkable recovery
             results.
           </p>
         </div>
 
         {/* Carousel Container */}
-        <div className="relative max-w-4xl mx-auto" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className="relative max-w-5xl mx-auto" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           {/* Main Testimonial Card */}
-          <Card className="shadow-lg overflow-hidden">
-            <CardContent className="p-8 md:p-12">
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-                {/* Patient Image */}
-                <div className="flex-shrink-0">
-                  <div className="relative">
+          <Card className="shadow-2xl border-none overflow-hidden bg-card rounded-3xl">
+            <CardContent className="p-0">
+              <div className="flex flex-col md:flex-row">
+                 {/* Image Side */}
+                <div className="md:w-2/5 relative h-64 md:h-auto overflow-hidden">
                     <img
                       src={testimonials[currentSlide].image || "/placeholder.svg"}
                       alt={testimonials[currentSlide].name}
-                      className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-4 border-primary/20"
+                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute -top-2 -right-2 bg-primary rounded-full p-1">
-                      <Quote className="w-4 h-4 text-primary-foreground" />
-                    </div>
-                  </div>
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden" />
+                      <div className="absolute bottom-4 left-4 text-white md:hidden">
+                          <p className="font-bold text-lg">{testimonials[currentSlide].name}</p>
+                          <p className="text-sm opacity-90">{testimonials[currentSlide].condition}</p>
+                      </div>
                 </div>
 
-                {/* Testimonial Content */}
-                <div className="flex-1 text-center md:text-left">
+                {/* Content Side */}
+                <div className="md:w-3/5 p-8 md:p-12 md:py-16 flex flex-col justify-center relative bg-muted/20">
+                    <Quote className="absolute top-8 left-8 w-12 h-12 text-primary/10 rotate-180" />
+                  
                   {/* Rating Stars */}
-                  <div className="flex justify-center md:justify-start mb-4">
+                  <div className="flex mb-6">
                     {[...Array(testimonials[currentSlide].rating)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
 
                   {/* Testimonial Text */}
-                  <blockquote className="text-lg md:text-xl text-foreground leading-relaxed mb-6 italic">
+                  <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed mb-8 font-medium">
                     "{testimonials[currentSlide].text}"
                   </blockquote>
 
                   {/* Patient Info */}
-                  <div className="space-y-1">
-                    <div className="font-semibold text-lg text-foreground">{testimonials[currentSlide].name}</div>
-                    <div className="text-muted-foreground">
-                      Age {testimonials[currentSlide].age} • {testimonials[currentSlide].condition}
+                  <div className="space-y-1 hidden md:block">
+                    <div className="font-bold text-xl text-foreground">{testimonials[currentSlide].name}</div>
+                    <div className="text-muted-foreground font-medium">
+                      {testimonials[currentSlide].condition}
                     </div>
                   </div>
                 </div>
@@ -146,56 +139,54 @@ export default function TestimonialsSection() {
           </Card>
 
           {/* Navigation Buttons */}
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm hover:bg-background"
-            onClick={prevSlide}
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </Button>
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-4 pointer-events-none w-full md:w-[106%] md:-left-[3%]">
+               <Button
+                variant="outline"
+                size="icon"
+                className="w-12 h-12 rounded-full shadow-lg border-border bg-background/80 hover:bg-background pointer-events-auto transition-transform hover:scale-110"
+                onClick={prevSlide}
+               >
+                <ChevronLeft className="w-6 h-6 text-foreground" />
+              </Button>
 
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm hover:bg-background"
-            onClick={nextSlide}
-          >
-            <ChevronRight className="w-4 h-4" />
-          </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                className="w-12 h-12 rounded-full shadow-lg border-border bg-background/80 hover:bg-background pointer-events-auto transition-transform hover:scale-110"
+                onClick={nextSlide}
+               >
+                <ChevronRight className="w-6 h-6 text-foreground" />
+              </Button>
+          </div>
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center mt-8 space-x-2">
+        <div className="flex justify-center mt-10 space-x-3">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide ? "bg-primary scale-125" : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === currentSlide ? "w-8 bg-primary" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
               }`}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
 
         {/* Stats Section */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">500+</div>
-            <div className="text-muted-foreground">Happy Patients</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">5+</div>
-            <div className="text-muted-foreground">Years Experience</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">98%</div>
-            <div className="text-muted-foreground">Success Rate</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">24/7</div>
-            <div className="text-muted-foreground">Support Available</div>
-          </div>
+        <div className="mt-24 pt-12 border-t border-border/40 grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+                { number: "500+", label: "Happy Patients" },
+                { number: "5+", label: "Years Experience" },
+                { number: "98%", label: "Success Rate" },
+                { number: "24/7", label: "Support Available" }
+            ].map((stat, idx) => (
+              <div key={idx} className="text-center group hover:-translate-y-1 transition-transform duration-300">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:text-primary/80 transition-colors">{stat.number}</div>
+                <div className="text-muted-foreground font-medium text-lg">{stat.label}</div>
+              </div>
+            ))}
         </div>
       </div>
     </section>

@@ -22,7 +22,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <div className="w-4 h-4 bg-white rounded-sm"></div>
               </div>
-              <span className="font-bold text-xl font-heading">PhysioHome</span>
+              <span className="font-bold text-xl font-heading">Dr. Shukla Physiotherapy</span>
             </div>
             <p className="text-background/80 leading-relaxed">
               Professional physiotherapy services with 5+ years of experience, bringing expert care directly to your
@@ -30,21 +30,21 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="tel:+919876543210"
+                href="tel:+919451194384"
                 className="text-background/80 hover:text-primary transition-colors"
                 aria-label="Call us"
               >
                 <Phone className="w-5 h-5" />
               </a>
               <a
-                href="mailto:info@physiohome.com"
+                href="mailto:drshuklaphysiotherapy@gmail.com"
                 className="text-background/80 hover:text-primary transition-colors"
                 aria-label="Email us"
               >
                 <Mail className="w-5 h-5" />
               </a>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919451194384"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-background/80 hover:text-primary transition-colors"
@@ -112,21 +112,21 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-background/80">+91 98765 43210</p>
+                  <p className="text-background/80">+91 94511 94384</p>
                   <p className="text-sm text-background/60">24/7 Emergency</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-background/80">info@physiohome.com</p>
+                  <p className="text-background/80 ">drshuklaphysiotherapy@gmail.com</p>
                   <p className="text-sm text-background/60">Response within 24hrs</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-background/80">Mumbai, Pune, Delhi NCR</p>
+                  <p className="text-background/80">Delhi, Noida, Ghaziabad</p>
                   <p className="text-sm text-background/60">Home visits available</p>
                 </div>
               </div>
@@ -138,7 +138,7 @@ export default function Footer() {
         <div className="border-t border-background/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-background/80 text-sm">
-              © {currentYear} PhysioHome. All rights reserved. | Professional Physiotherapy Services
+              © {currentYear} Dr. Shukla Physiotherapy. All rights reserved. | Professional Physiotherapy Services
             </p>
             <div className="flex items-center space-x-1 text-background/80 text-sm">
               <span>Made with</span>
