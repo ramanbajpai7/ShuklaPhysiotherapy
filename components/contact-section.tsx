@@ -24,16 +24,33 @@ export default function ContactSection() {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
-  // Simulated submit
+  // Handle submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate API call
-    setTimeout(() => {
-        setIsSubmitting(false)
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok && data.success) {
         setIsSubmitted(true)
-    }, 1500)
+      } else {
+        throw new Error(data.error || "Failed to send message")
+      }
+    } catch (error) {
+      console.error("Error:", error)
+      alert("Failed to send message. Please try again or call us directly.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -59,7 +76,7 @@ export default function ContactSection() {
                     { icon: Phone, title: "Phone Support", info: "+91 9451194384", sub: "Available 24/7 for emergencies" },
                     { icon: Mail, title: "Email Us", info: "drshuklaphysiotherapy@gmail.com", sub: "Response within 2 hours" },
                     { icon: MapPin, title: "Service Area", info: "Delhi, Noida, Ghaziabad", sub: "Home visits at your doorstep" },
-                    { icon: Clock, title: "Working Hours", info: "Mon - Sat: 8am - 8pm", sub: "Sunday: 10am - 6pm" }
+                    { icon: Clock, title: "Working Hours", info: "Mon - Sat: 8am - 8pm" }
                 ].map((item, idx) => (
                     <div key={idx} className="flex items-start space-x-5 p-4 rounded-xl hover:bg-background/80 transition-colors">
                         <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 text-primary">
@@ -79,13 +96,13 @@ export default function ContactSection() {
               <h4 className="font-semibold text-foreground mb-4">Immediate Assistance</h4>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" asChild className="flex-1 rounded-xl shadow-lg hover:-translate-y-1 transition-transform">
-                  <a href="tel:+919876543210">
+                  <a href="tel:+919451194384">
                     <Phone className="w-4 h-4 mr-2" />
                     Call Now
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="flex-1 rounded-xl bg-green-50 text-green-700 border-green-200 hover:bg-green-100 hover:text-green-800 hover:border-green-300">
-                  <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/919451194384" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5 mr-2" />
                     WhatsApp
                   </a>
@@ -134,7 +151,7 @@ export default function ContactSection() {
                         <Label htmlFor="contact-phone">Phone Number *</Label>
                         <Input
                           id="contact-phone"
-                          placeholder="+91 98765..."
+                          placeholder="+91 9451194384"
                           value={formData.phone}
                           onChange={(e) => handleInputChange("phone", e.target.value)}
                           required
